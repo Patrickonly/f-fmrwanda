@@ -80,7 +80,12 @@ export function SiteFooter() {
 
         <div className="mt-12 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row gap-3 justify-between text-xs text-primary-foreground/70">
           <p>© {new Date().getFullYear()} F&amp;FM Rwanda Ltd. All rights reserved.</p>
-          <p>Empowering farmers · Reliable market-oriented production.</p>
+          <p>
+            Developed by{" "}
+            <a href="https://futureinnovatech.rw/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline transition-colors">
+              FUTURE INNOVATECH LTD
+            </a>
+          </p>
         </div>
       </div>
     </footer>

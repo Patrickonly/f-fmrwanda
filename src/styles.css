@@ -1,0 +1,168 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-earth: var(--earth);
+  --color-earth-foreground: var(--earth-foreground);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Fraunces", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Agriculture palette: deep forest, fresh leaf, harvest gold, terracotta, cream */
+  --background: oklch(0.985 0.012 95);
+  --foreground: oklch(0.22 0.04 145);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 145);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 145);
+
+  --primary: oklch(0.42 0.13 145);       /* deep forest green */
+  --primary-foreground: oklch(0.985 0.012 95);
+  --primary-glow: oklch(0.62 0.18 142);  /* fresh leaf */
+
+  --secondary: oklch(0.95 0.03 95);
+  --secondary-foreground: oklch(0.28 0.06 145);
+
+  --muted: oklch(0.94 0.02 95);
+  --muted-foreground: oklch(0.48 0.04 130);
+
+  --accent: oklch(0.78 0.17 78);         /* harvest gold */
+  --accent-foreground: oklch(0.22 0.04 145);
+
+  --earth: oklch(0.52 0.13 45);          /* terracotta soil */
+  --earth-foreground: oklch(0.985 0.012 95);
+
+  --cream: oklch(0.97 0.022 90);
+
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.985 0.012 95);
+
+  --border: oklch(0.88 0.02 110);
+  --input: oklch(0.88 0.02 110);
+  --ring: oklch(0.42 0.13 145);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.1 145 / 0.85), oklch(0.22 0.06 145 / 0.6));
+  --gradient-leaf: linear-gradient(135deg, oklch(0.42 0.13 145), oklch(0.62 0.18 142));
+  --gradient-harvest: linear-gradient(135deg, oklch(0.78 0.17 78), oklch(0.65 0.18 50));
+  --shadow-soft: 0 10px 40px -10px oklch(0.32 0.1 145 / 0.25);
+  --shadow-leaf: 0 20px 60px -20px oklch(0.42 0.13 145 / 0.4);
+}
+
+.dark {
+  --background: oklch(0.16 0.03 145);
+  --foreground: oklch(0.96 0.015 95);
+  --card: oklch(0.22 0.04 145);
+  --card-foreground: oklch(0.96 0.015 95);
+  --popover: oklch(0.22 0.04 145);
+  --popover-foreground: oklch(0.96 0.015 95);
+  --primary: oklch(0.72 0.16 142);
+  --primary-foreground: oklch(0.16 0.03 145);
+  --primary-glow: oklch(0.82 0.16 140);
+  --secondary: oklch(0.26 0.04 145);
+  --secondary-foreground: oklch(0.96 0.015 95);
+  --muted: oklch(0.26 0.04 145);
+  --muted-foreground: oklch(0.72 0.03 110);
+  --accent: oklch(0.78 0.17 78);
+  --accent-foreground: oklch(0.16 0.03 145);
+  --earth: oklch(0.62 0.14 45);
+  --earth-foreground: oklch(0.96 0.015 95);
+  --cream: oklch(0.22 0.04 145);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.72 0.16 142);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility text-gradient-leaf {
+  background: var(--gradient-leaf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-harvest {
+  background: var(--gradient-harvest);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-leaf {
+  background-image: var(--gradient-leaf);
+}
+
+@utility bg-gradient-harvest {
+  background-image: var(--gradient-harvest);
+}
+
+@utility bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-leaf { box-shadow: var(--shadow-leaf); }
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+}
